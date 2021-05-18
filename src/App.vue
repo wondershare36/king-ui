@@ -9,8 +9,6 @@ export default {
   components: {}
 };
 </script>
-<style lang="scss" scoped>
-.topnav {
-  border: 1px solid red;
-}
+<style lang="scss" >
+
 </style>
