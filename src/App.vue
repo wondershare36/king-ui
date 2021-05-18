@@ -1,6 +1,4 @@
 <template>
-  <div>导航栏 | <router-link to="/">Frank</router-link> | <router-link to="/xxx">Frank</router-link>
-  </div>
   <router-view/>
 </template>
 
@@ -8,7 +6,11 @@
 
 export default {
   name: 'App',
-  components: {
-  }
-}
+  components: {}
+};
 </script>
+<style lang="scss" scoped>
+.topnav {
+  border: 1px solid red;
+}
+</style>
