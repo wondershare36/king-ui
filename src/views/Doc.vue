@@ -29,6 +29,7 @@
 <script lang="ts">
 import Topnav from '../components/Topnav.vue';
 import { inject,Ref } from 'vue';
+import {router} from '../router';
 export default {
 name: "Doc",
   components: { Topnav },
@@ -36,6 +37,7 @@ name: "Doc",
     const menuVisible = inject<Ref<boolean>>('menuVisible');
     console.log('doc获取的menuVisible为：' + menuVisible.value);
     return {menuVisible}
+
   }
 }
 </script>
