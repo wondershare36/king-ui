@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <Topnav/>
+  <div class="layout">
+    <Topnav class="nav" />
     <div class="content">
       <aside v-if="menuVisible">
         <h2>组件列表</h2>
@@ -43,6 +43,19 @@ name: "Doc",
 </script>
 
 <style lang="scss" scoped>
+.layout{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  > .nav{
+    flex-shrink: 0;
+  }
+  > .content{
+    flex-grow: 1;
+    padding-top: 60px;
+    padding-left: 156px;
+  }
+}
 aside{
   background-color: lightblue;
   width: 150px;
