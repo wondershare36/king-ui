@@ -26,9 +26,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../helper";
 .topnav {
   padding: 16px 20px;
-  background-color: pink;
+  color: #E7F1F4;
+  background-color: $deepBlue;
   display: flex;
   align-items: center;
   justify-content: space-between;

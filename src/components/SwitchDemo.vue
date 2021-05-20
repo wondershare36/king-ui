@@ -1,7 +1,7 @@
 <template>
   <div>
     Switch的文档
-    <Switch :value="y" @update:value="y=$event"/>
+    <Switch :value="bool" @update:value="bool=$event"/>
   </div>
 </template>
 
@@ -13,8 +13,8 @@ export default {
   name: 'SwitchDemo',
   components: {Switch},
   setup() {
-    const y = ref(true);
-    return {y};
+    const bool = ref(true);
+    return {bool};
   }
 };
 </script>

@@ -42,6 +42,7 @@ name: "Doc",
 </script>
 
 <style lang="scss" scoped>
+@import "../helper";
 .layout {
   display: flex;
   flex-direction: column;
@@ -66,17 +67,20 @@ name: "Doc",
   > main {
     flex-grow: 1;
     padding: 16px;
-    background: lightgreen;
+    background: #1B345C;
+    color: #A7C0DF;
   }
 }
 aside{
-  background-color: lightblue;
+  color: $lightBlue;
+  background-color: $deepBlue;
   width: 150px;
   padding: 16px;
   position: fixed;
+  z-index: 20;
   top: 0;
   left: 0;
-  padding-top: 70px;
+  margin-top: 60px;
   height: 100%;
 
   > h2{
