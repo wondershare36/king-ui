@@ -2,12 +2,12 @@
   <div class="gulu-dialog-wrapper" v-if="visible">
     <div class="gulu-dialog-overlay" @click="onClickOverlay">123</div>
     <div class="gulu-dialog">
-      <header>标题
+      <header>
+        <slot name="title" />
         <span @click="close" class="gulu-dialog-close"></span>
       </header>
       <main>
-        <p>第一行字</p>
-        <p>第二行字</p>
+        <slot name="content"/>
       </main>
       <footer>
         <Button level="main" @click="ok">OK</Button>
@@ -24,6 +24,10 @@ import Button from './Button.vue';
 export default {
   name: 'Dialog',
   props: {
+    title: {
+      type: String,
+      default: '提示',
+    },
     visible: {
       type: Boolean,
       default: false,
@@ -32,11 +36,11 @@ export default {
       type: Boolean,
       default: true,
     },
-    ok:{
-      type:Function
+    ok: {
+      type: Function
     },
-    cancel:{
-      type:Function
+    cancel: {
+      type: Function
     }
   },
   components: {Button},
@@ -45,13 +49,13 @@ export default {
       context.emit('update:visible', false);
     };
     const ok = () => {
-      if(props.ok?.()!==false){
-        close()
+      if (props.ok?.() !== false) {
+        close();
       }
     };
     const cancel = () => {
-      if(props.cancel?.()!==false){
-        close()
+      if (props.cancel?.() !== false) {
+        close();
       }
     };
 
@@ -60,7 +64,7 @@ export default {
         close();
       }
     };
-    return {ok, cancel, onClickOverlay,close};
+    return {ok, cancel, onClickOverlay, close};
   }
 };
 </script>
