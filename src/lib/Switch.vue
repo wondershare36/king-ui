@@ -24,16 +24,35 @@ export default {
 <style lang="scss" scoped>
 $button_width: 44px;
 $button_height: $button_width/2;
-$slider_width: $button_width/2 ;
-$slider_height: $button_height ;
-$radius:4px;
+$slider_width: $button_width/2;
+$slider_height: $button_height;
+$radius: 4px;
 button {
   height: $button_height;
   width: $button_width;
-  border:none;
+  border: none;
   border-radius: $radius;
   position: relative;
-
+  &.checked {
+    background-color: #152445;
+  }
+  &.checked > span {
+    left: calc(100% - #{$button_width/2});
+  }
+  &:focus {
+    outline: none;
+  }
+  &:active {
+    > span {
+      width: $slider_width;
+    }
+  }
+  &.checked:active {
+    > span {
+      width: $slider_width;
+      margin-left: -4px;
+    }
+  }
 }
 .slider {
   position: absolute;
@@ -44,25 +63,7 @@ button {
   border-radius: $radius;
   background-color: #267BB1;
   transition: left 250ms;
+
 }
-button.checked {
-  background-color: #152445;
-}
-button.checked > span {
-  left: calc(100% - #{$button_width/2});
-}
-button:focus {
-  outline: none;
-}
-button:active {
-  > span {
-    width: $slider_width;
-  }
-}
-button.checked:active{
-  >span{
-    width: $slider_width;
-    margin-left: -4px;
-  }
-}
+
 </style>
