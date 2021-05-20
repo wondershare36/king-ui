@@ -1,5 +1,5 @@
 <template>
-  <button @click="toggle" :class="{checked:value}">
+  <button @click="toggle" class="gulu-switch" :class="{'gulu-checked':value}">
     <span class="slider"></span>
   </button>
   <div>{{ value }}</div>
@@ -21,49 +21,49 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-$button_width: 44px;
-$button_height: $button_width/2;
-$slider_width: $button_width/2;
-$slider_height: $button_height;
-$radius: 4px;
-button {
-  height: $button_height;
-  width: $button_width;
+<style lang="scss">
+@import "../helper";
+$h: 22px;
+$h2: $h - 4;
+.gulu-switch {
+  height: $h;
+  width: $h*2;
   border: none;
-  border-radius: $radius;
+  border-radius: $h/2;
   position: relative;
-  &.checked {
-    background-color: #152445;
+  background-color: #DCDFE6;
+  transition: all 250ms;
+  .slider {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    height: $h2;
+    width: $h2;
+    border-radius: $h2;
+    background-color: #fff;
+    transition: all 250ms;
   }
-  &.checked > span {
-    left: calc(100% - #{$button_width/2});
+  &.gulu-checked {
+    background-color: $deepBlue;
+    > span {
+      left: calc(100% - #{$h - 2px});
+    }
+    &:active {
+      > span {
+        margin-left: -10px;
+      }
+    }
   }
   &:focus {
     outline: none;
   }
   &:active {
-    > span {
-      width: $slider_width;
-    }
-  }
-  &.checked:active {
-    > span {
-      width: $slider_width;
-      margin-left: -4px;
+    > .slider {
+      width: $h;
+      margin-left: 10px;
     }
   }
 }
-.slider {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: $slider_height;
-  width: $slider_width;
-  border-radius: $radius;
-  background-color: #267BB1;
-  transition: left 250ms;
 
-}
 
 </style>

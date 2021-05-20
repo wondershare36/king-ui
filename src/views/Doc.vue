@@ -67,13 +67,11 @@ name: "Doc",
   > main {
     flex-grow: 1;
     padding: 16px;
-    background: #1B345C;
-    color: #A7C0DF;
   }
 }
 aside{
-  color: $lightBlue;
-  background-color: $deepBlue;
+  background-color: #fff;
+  border-right:1px solid fade-out(black,0.95) ;
   width: 150px;
   padding: 16px;
   position: fixed;
@@ -95,7 +93,6 @@ aside{
     position: fixed;
     top: 0;
     left: 0;
-    padding-top: 70px;
   }
 }
 </style>
