@@ -1,5 +1,6 @@
 <template>
-  <button class="gulu-button" :class="classes">
+  <button class="gulu-button" :class="classes" :disable="disable">
+    <span v-if="loading" class="gulu-loadingIndicator"></span>
     <slot/>
   </button>
 </template>
@@ -21,6 +22,14 @@ export default {
     level: {
       type: String,
       default: 'normal',
+    },
+    disable: {
+      type: Boolean,
+      default: false,
+    },
+    loading:{
+      type: Boolean,
+      default: false,
     }
   },
   setup(props) {
@@ -44,6 +53,7 @@ $color: #333;
 $blue: #40a9ff;
 $radius: 4px;
 $red: #F56C6C;
+$grey: grey;
 .gulu-button {
   box-sizing: border-box;
   height: $h;
@@ -62,8 +72,7 @@ $red: #F56C6C;
   & + & {
     margin-left: 8px;
   }
-  &:hover,
-  &:focus {
+  &:hover, &:focus {
     color: $blue;
     border-color: $blue;
   }
@@ -73,6 +82,7 @@ $red: #F56C6C;
   &::-moz-focus-inner {
     border: 0;
   }
+  // theme
   &.gulu-theme-link {
     border-color: transparent;
     box-shadow: none;
@@ -91,6 +101,7 @@ $red: #F56C6C;
       background: darken(white, 5%);
     }
   }
+  // size
   &.gulu-size-big {
     font-size: 24px;
     height: 48px;
@@ -101,6 +112,7 @@ $red: #F56C6C;
     height: 20px;
     padding: 0 4px;
   }
+  // level
   &.gulu-theme-button {
     &.gulu-level-main {
       background: $blue;
@@ -148,5 +160,43 @@ $red: #F56C6C;
       }
     }
   }
+  // disable
+  &.gulu-theme-button{
+    &[disabled]{
+      color: $grey;
+      cursor: not-allowed;
+      &:hover{
+        border-color: $grey;
+      }
+    }
+  }
+  &.gulu-theme-link,&.gulu-theme-text{
+    &[disabled]{
+      color: $grey;
+      cursor: not-allowed;
+    }
+  }
+  // loading
+  >.gulu-loadingIndicator{
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+  }
+  > .gulu-loadingIndicator{
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    margin-right: 4px;
+    border-radius: 8px;
+    border-color: $blue $blue $blue transparent;
+    border-style: solid;
+    border-width: 2px;
+    animation: gulu-spin 0.8s infinite linear;
+    @keyframes gulu-spin {
+      0%{transform: rotate(0deg)}
+      100%{transform: rotate(360deg)}
+    }
+  }
+
 }
 </style>
