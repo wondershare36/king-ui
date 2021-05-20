@@ -6,7 +6,10 @@
 
 <script lang="ts">
 export default {
-name: "DocDemo"
+name: "DocDemo",
+  setup(){
+
+  }
 }
 </script>
 
