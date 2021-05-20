@@ -1,6 +1,6 @@
 <template>
   <div>
-    Switch的文档
+    <h1>Switch 示例</h1>
     <Switch :value="bool" @update:value="bool=$event"/>
   </div>
 </template>
