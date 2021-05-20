@@ -1,20 +1,24 @@
 <template>
-  <div class="gulu-dialog-wrapper" v-if="visible">
-    <div class="gulu-dialog-overlay" @click="onClickOverlay">123</div>
-    <div class="gulu-dialog">
-      <header>
-        <slot name="title" />
-        <span @click="close" class="gulu-dialog-close"></span>
-      </header>
-      <main>
-        <slot name="content"/>
-      </main>
-      <footer>
-        <Button level="main" @click="ok">OK</Button>
-        <Button @click="cancel">Cancel</Button>
-      </footer>
+  <Teleport to="body">
+    <template v-if="visible">
+    <div class="gulu-dialog-overlay" @click="onClickOverlay"></div>
+    <div class="gulu-dialog-wrapper" v-show="visible">
+      <div class="gulu-dialog">
+        <header>
+          <slot name="title" />
+          <span @click="close" class="gulu-dialog-close"></span>
+        </header>
+        <main>
+          <slot name="content"/>
+        </main>
+        <footer>
+          <Button level="main" @click="ok">OK</Button>
+          <Button @click="cancel">Cancel</Button>
+        </footer>
+      </div>
     </div>
-  </div>
+    </template>
+  </Teleport>
 </template>
 
 <script lang="ts">
@@ -82,15 +86,14 @@ $border-color: #d9d9d9;
   transform: translate(-50%, -50%);
   min-width: 15em;
   max-width: 90%;
-  z-index: 10;
   &-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1;
     background-color: fade-out(black, 0.5);
+    z-index: 3;
   }
   &-wrapper {
     height: 100vh;
@@ -98,7 +101,7 @@ $border-color: #d9d9d9;
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 30;
+    z-index: 4;
   }
   > header {
     padding: 12px 16px;
