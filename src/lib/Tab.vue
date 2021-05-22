@@ -1,13 +1,13 @@
 <template>
   <div>
-    Tab
+    <slot/>
   </div>
 </template>
 
 <script>
 export default {
-name: "Tab"
-}
+  name: 'Tab'
+};
 </script>
 
 <style scoped>
