@@ -1,12 +1,14 @@
 <template>
   <div class="gulu-tabs">
-    <div class="gulu-tabs-nav">
+    <div class="gulu-tabs-nav" ref="container">
       <div class="gulu-tabs-nav-item"
            v-for="(t,index) in titles" :key="index"
+           :ref="el => { if (el) navItems[index] = el }"
            @click="select(t)"
            :class="{selected:t===selected}">
         {{ t }}
       </div>
+      <div class="gulu-tabs-nav-indicator" ref="indicator"></div>
     </div>
     <div class="gulu-tabs-content">
       <component v-for="c in defaults" :is="c"
@@ -17,6 +19,7 @@
 
 <script lang="ts">
 import Tab from './Tab.vue';
+import {ref, onMounted, onUpdated} from 'vue';
 
 export default {
   name: 'Tabs',
@@ -26,6 +29,21 @@ export default {
     }
   },
   setup(props, context) {
+    const navItems = ref<HTMLDivElement[]>([]);
+    const indicator = ref<HTMLDivElement>(null);
+    const container = ref<HTMLDivElement>(null);
+    const x = () => {
+      const divs = navItems.value;
+      const result = divs.filter((div) => div.classList.contains('selected'))[0];
+      const {width} = result.getBoundingClientRect();
+      const {left: left1} = container.value.getBoundingClientRect();
+      const {left: left2} = result.getBoundingClientRect();
+      const left = left2 - left1;
+      indicator.value.style.width = width + 'px';
+      indicator.value.style.left = left + 'px';
+    };
+    onMounted(x);
+    onUpdated(x);
     const defaults = context.slots.default();
     defaults.forEach((tag) => {
       if (tag.type !== Tab) {
@@ -36,7 +54,7 @@ export default {
     const select = (title: String) => {
       context.emit('update:selected', title);
     };
-    return {defaults, titles, select};
+    return {defaults, titles, select, navItems, indicator, container};
   }
 };
 </script>
@@ -49,6 +67,7 @@ $border-color: #d9d9d9;
 .gulu-tabs {
   &-nav {
     display: flex;
+    position: relative;
     color: $color;
     border-bottom: 1px solid $border-color;
     &-item {
@@ -62,12 +81,21 @@ $border-color: #d9d9d9;
         color: $blue;
       }
     }
+    &-indicator {
+      position: absolute;
+      left: 0;
+      bottom: -1px;
+      height: 3px;
+      width: 100px;
+      background-color: $blue;
+      transition: left 0.25s;
+    }
   }
   &-content {
     padding: 8px 0;
-    &-item{
+    &-item {
       display: none;
-      &.selected{
+      &.selected {
         display: block;
       }
     }
