@@ -1,6 +1,10 @@
 <template>
   <div class="topnav">
-    <router-link to="/" class="logo">LOGO</router-link>
+    <router-link to="/" class="logo">
+      <svg class="icon">
+        <use xlink:href="#icon-king"></use>
+      </svg>
+    </router-link>
     <ul class="menu">
       <li>菜单1</li>
       <li>菜单2</li>
@@ -29,8 +33,6 @@ export default {
 @import "../helper";
 .topnav {
   padding: 16px 20px;
-  color: #E7F1F4;
-  background-color: $deepBlue;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -42,8 +44,11 @@ export default {
   .logo {
     max-width: 6em;
     margin-right: auto;
+    > svg{
+      width: 32px;
+      height: 32px;
+    }
   }
-
   .menu {
     display: flex;
 
@@ -51,7 +56,6 @@ export default {
       margin-left: 10px;
     }
   }
-
   .toggleAside {
     display: none;
     width: 20px;
@@ -62,7 +66,6 @@ export default {
     top: 50%;
     transform: translateY(-50%);
   }
-
   @media (max-width: 500px) {
     > .menu {
       display: none;
