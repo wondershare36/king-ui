@@ -21,5 +21,8 @@ export default {
 };
 </script>
 <style lang="scss">
-
+  #app{
+    width: 100vw;
+    overflow: hidden;
+  }
 </style>
