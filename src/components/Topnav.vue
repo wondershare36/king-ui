@@ -9,7 +9,7 @@
       <svg class="icon">
         <use xlink:href="#icon-king"></use>
       </svg>
-      <span>Kings</span>
+      <span>King</span>
     </router-link>
     <ul class="menu">
       <li>
