@@ -23,3 +23,6 @@ body{
     fill: currentColor;
     overflow: hidden;
 }
+button[disabled]{
+    cursor: not-allowed;
+}

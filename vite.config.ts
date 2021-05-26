@@ -1,6 +1,6 @@
+// @ts-nocheck
 import {md} from './plugins/md';
 import {baseParse} from '@vue/compiler-core';
-// import * as fs from 'fs';
 import fs from 'fs';
 
 export default {
