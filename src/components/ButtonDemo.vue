@@ -59,7 +59,6 @@ export default {
   components: {Button},
   setup() {
     const onClick = () => {
-      console.log('hi');
     };
     return {onClick};
   },
