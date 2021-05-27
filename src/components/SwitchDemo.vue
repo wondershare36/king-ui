@@ -5,7 +5,6 @@
   </div>
 </template>
 <script lang="ts">
-import Button from '../lib/Button.vue';
 import Switch1Demo from './Switch1.demo.vue';
 import Switch2Demo from './Switch2.demo.vue';
 
@@ -22,7 +21,6 @@ import {
 export default {
   components: {
     Demo,
-    Button
   },
   setup() {
     const bool = ref(false);
@@ -30,7 +28,7 @@ export default {
       bool,
       Switch1Demo,
       Switch2Demo,
-      Prism
+      Prism,
     };
   }
 };
