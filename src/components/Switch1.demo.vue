@@ -1,5 +1,5 @@
 <demo>
-  <h2>常规用法</h2>
+ 常规用法
 </demo>
 
 <template>

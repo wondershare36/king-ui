@@ -1,5 +1,5 @@
 <demo>
-<h2>支持 disabled </h2>
+支持 disabled
 </demo>
 <template>
   <Switch :value="bool" @update:value="bool=$event" disabled/>

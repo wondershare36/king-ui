@@ -8,8 +8,6 @@ export const openDialog = (options) => {
   const close=()=>{
     // @ts-ignore
     app.unmount(div);
-
-
   }
   const app = createApp({
     render() {
@@ -22,7 +20,6 @@ export const openDialog = (options) => {
         }
       }, {
         title, content,
-
       });
     }
   });

@@ -5,7 +5,7 @@
       <component :is="component"/>
     </div>
     <div class="demo-actions">
-      <Button @click="toggle">查看代码</Button>
+      <Button level="main" @click="toggle">{{codeVisible?'隐藏代码':'查看代码'}}</Button>
     </div>
     <div class="demo-code" v-if="codeVisible">
       <pre class="language-html" v-html="html"/>
@@ -31,7 +31,7 @@ export default {
     const html = computed(() => {
       return Prism.highlight(props.component.__sourceCode, Prism.languages.html, 'html');
     });
-    const codeVisible = ref(false);
+    const codeVisible = ref(true);
     const toggle=()=>{
       codeVisible.value=!codeVisible.value
     }
